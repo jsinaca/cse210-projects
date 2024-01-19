@@ -48,10 +48,8 @@ class Program
                     Console.WriteLine("This is not a valid answer, try again");
                     break;
                 }
-
             }
         }
-
     }
     static string Menu() {
         Console.WriteLine("Please select one of the following choices");

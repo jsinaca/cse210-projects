@@ -1,7 +1,3 @@
-
-
-using CsvHelper;
-
 class Entry
 {
     Entry () {}

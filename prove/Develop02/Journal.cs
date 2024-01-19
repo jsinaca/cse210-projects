@@ -54,9 +54,7 @@ class Journal
                 AddEntry(newEntry);
                 dateIndex += 3;
                 promptIndex += 3;
-                textIndex += 3;
-
-                
+                textIndex += 3;                
             }
         }
     }
