@@ -48,7 +48,8 @@ class Program
                     Console.WriteLine("This is not a valid answer, try again");
                     break;
                 }
-            }
+            } 
+            
         }
     }
     static string Menu() {
