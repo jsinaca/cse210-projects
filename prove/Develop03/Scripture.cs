@@ -1,6 +1,6 @@
 class Scripture {
-    Reference _reference = new Reference("Proverbs", 3, 5);
-    List<Word> _words = new List<Word>();
+    private Reference _reference = new Reference("Proverbs", 3, 5);
+    private List<Word> _words = new List<Word>();
     public Scripture(Reference reference, string text) {
         _reference = reference;
         string[] temp = text.Split();
