@@ -46,7 +46,7 @@ class Reflection : Activity {
     }
     private void DisplayQuestion() {
         DateTime endTime = EndTime(_duration);
-        List<int> questionDisplayed = new List<int>(); 
+// List<int> questionDisplayed = new List<int>(); 
 
         while (DateTime.Now < endTime) {
             string question = GetRandomQuestion(); 

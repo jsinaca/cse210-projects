@@ -1,0 +1,4 @@
+100
+SimpleGoal:   talk,   talk in church,   100, True
+EternalGoal:   read,   study scriptures,   50
+ChecklistGoal:   temple,   go to temple,   50, 0, 5, 500
