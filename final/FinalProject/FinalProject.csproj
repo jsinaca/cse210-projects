@@ -8,4 +8,9 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySql.Simple" Version="5.3.5" />
+    <PackageReference Include="MySQLConnection" Version="1.0.1" />
+  </ItemGroup>
+
 </Project>
