@@ -1,25 +1,23 @@
-// class DateOfBirth {
-//     private int _month;
-//     private int _day;
-//     private int _year;
+class DateOfBirth {
+    private string _month;
+    private string _day;
+    private string _year;
 
-//     public DateOfBirthday(int month, int day, int year) {
-//         _month = month;
-//         _day = day;
-//         _year = year;
-//         string dob = DisplayDOB();
-//         // return dob;
-//     }
-//     public void ChangeMonth() {
-
-//     }
-//     public void ChangeDay() {
-
-//     }
-//     public void ChangeYear() {
-
-//     }
-//     public string DisplayDOB() {
-//         return "";
-//     }
-// }
+    public DateOfBirth (string month, string day, string year) {
+        _month = month;
+        _day = day;
+        _year = year;
+    }
+    public void ChangeMonth(string newMonth) {
+        _month = newMonth;
+    }
+    public void ChangeDay(string newDay) {
+        _day = newDay;
+    }
+    public void ChangeYear(string newYear) {
+        _year = newYear;
+    }
+    public string DisplayDOB() {
+        return "";
+    }
+}
