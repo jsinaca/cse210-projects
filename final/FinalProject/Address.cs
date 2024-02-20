@@ -1,4 +1,4 @@
-class Address {
+abstract class Address {
     protected string _address; 
     protected int _zip;
     protected string _state;
@@ -18,7 +18,8 @@ class Address {
     public void ChangeState(string newStete) {
         _state = newStete;
     }
-    public virtual string DisplayAddress(){
-        return $"Address: {_address}\n Zipcode:{_zip}\n State: {_state}\n";
+    public virtual void DisplayAddress(){
+        Console.WriteLine($"Address: {_address}\nZipcode: {_zip}\nState: {_state}");
     }
+    public abstract string GetStrignRepresentation();
 }

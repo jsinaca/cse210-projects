@@ -1,0 +1,3 @@
+IFixedItInventory.txt
+MacBook,1234,MAcBook Pro Gen 4,3
+MacBook Air,987,MacBook Air,5

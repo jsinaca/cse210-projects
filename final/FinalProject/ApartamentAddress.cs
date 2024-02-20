@@ -7,7 +7,11 @@ class ApartamentAddress : Address {
     public void ChangeAptNumber(string newAptNumber) {
         _aptNumber = newAptNumber;
     }
-    public override string DisplayAddress() {
-        return $"Address: {_address}\n Zipcode:{_zip}\n State: {_state}\n Apartament Number: {_aptNumber}";
+    public override void DisplayAddress() {
+        Console.WriteLine($"Address: {_address}\nZipcode: {_zip}\nState: {_state}\nApartament Number: {_aptNumber}");
+    }
+
+    public override string GetStrignRepresentation() {
+        return $"ApartamentAddress:{_address},{_zip},{_state},{_aptNumber}";
     }
 }

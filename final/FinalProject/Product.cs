@@ -2,9 +2,7 @@ class Product {
     private string _name;
     private int _barCode;
     private string _description;
-    private int _qty;
-    // private List<string> _locations = new List<string>();
-    
+    private int _qty;    
     public Product(string name, int barcode, string description, int qty) {
         _name = name;
         _barCode = barcode;
@@ -30,9 +28,6 @@ class Product {
     public void DisplayQty() {
         Console.WriteLine($"The quantity of {_name} in the inventory is: {_qty}");
     }
-    // public void DisplayLocations() {
-
-    // }
     public string GetName() {
         return _name;
     }
@@ -43,7 +38,7 @@ class Product {
         _qty += addition;
     }
     public string GetStrignRepresentation() {
-        return $"{_name}, {_barCode}, {_description}, {_qty}";;
+        return $"{_name},{_barCode},{_description},{_qty}";
     }
     
 }

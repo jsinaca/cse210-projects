@@ -5,6 +5,7 @@ class Inventory {
   
     public void DisplayInventory() {
         Console.Clear();
+        Console.WriteLine("");
         Console.WriteLine("Full inventory");
         foreach (Product product in _products) {
             product.DisplayProductInfo();
@@ -13,15 +14,20 @@ class Inventory {
     public void AddNewProduct() {
         Console.Write("What is the name of the product? ");
         string name = Console.ReadLine();
-        Console.Write("What is the barcode of the product? ");
-        int barcode = int.Parse(Console.ReadLine());
         Console.Write("Add a breaf description of product ");
         string description = Console.ReadLine();
-        Console.Write("What is the quantity? ");
-        int qty = int.Parse(Console.ReadLine());
+        try {
+            Console.Write("What is the barcode of the product? ");
+            int barcode = int.Parse(Console.ReadLine());
+            Console.Write("What is the quantity? ");
+            int qty = int.Parse(Console.ReadLine());
 
-        Product product = new Product(name, barcode, description, qty);
-        _products.Add(product);
+            Product product = new Product(name, barcode, description, qty);
+            _products.Add(product);
+        }
+        catch (Exception e) {
+            Console.WriteLine("Something went wrong. Please verify your barcode and product quantity and try again");
+        }
     }
     public void AddQtyExistingProduct() {
         Console.Write("What is the name of the product? ");
@@ -33,7 +39,9 @@ class Inventory {
                 product.AddQty(addQty);
                 break;
             }
+            IfProductNoFound(product);
         }
+        
     }
     public void ChangeName() {
         Console.Write("What is the name of the product you want to change? ");
@@ -45,18 +53,26 @@ class Inventory {
                 product.ChangeName(newName);
                 break;
             }
+            IfProductNoFound(product);
         }
     }
     public void ChangeBarcode() {
-        Console.Write("What is the barcode of the product you want to change? ");
-        int userInput = int.Parse(Console.ReadLine());
-        foreach (Product product in _products) {
-            if (product.GetBarcode() == userInput) {
-                Console.Write("What is the new barcode of the product? ");
-                int newName = int.Parse(Console.ReadLine());
-                product.ChangeBarcode(newName);
-                break;
+        try {
+            Console.Write("What is the barcode of the product you want to change? ");
+            int userInput = int.Parse(Console.ReadLine());
+            foreach (Product product in _products) {
+                if (product.GetBarcode() == userInput) {
+                    Console.Write("What is the new barcode of the product? ");
+                    int newName = int.Parse(Console.ReadLine());
+                    product.ChangeBarcode(newName);
+                    break;
+                }
+                IfProductNoFound(product);
             }
+        }
+        catch (Exception e) {
+            Console.WriteLine("Barcode not found. Please verify barcode\n");
+            Thread.Sleep(2000);
         }
     }
     public void ChangeDescription() {
@@ -69,6 +85,7 @@ class Inventory {
                 product.ChangeDescription(newName);
                 break;
             }
+            IfProductNoFound(product);
         }
     }
     public void DisplayProductInfo() {
@@ -80,6 +97,7 @@ class Inventory {
                 product.DisplayProductInfo();
                 break;
             }
+            IfProductNoFound(product);
         }
     }
     public void DisplayQty() {
@@ -92,21 +110,17 @@ class Inventory {
             }
         }
     }
-    // public void RemoveProduct() {
-
-    // }
     public void Save(string name) {
-        using (StreamWriter outputFile = new StreamWriter(name)) {
-            outputFile.WriteLine($"{name}");
+        using (StreamWriter outputFile = new StreamWriter($"{name}Inventory.txt")) {
+            outputFile.WriteLine($"{name}Inventory.txt");
             foreach (Product product in _products) {
                 outputFile.WriteLine($"{product.GetStrignRepresentation()}");
             }   
         }
-        Console.Clear();
     }
     public void Load(string name) {
-        if (File.Exists($"{Directory.GetCurrentDirectory()}/{name}")) {
-            List<string> lines = new List<string>(File.ReadAllLines(name));
+        if (File.Exists($"{Directory.GetCurrentDirectory()}/{name}Inventory.txt")) {
+            List<string> lines = new List<string>(File.ReadAllLines($"{name}Inventory.txt"));
             lines.RemoveAt(0);
             
             foreach (string line in lines) {
@@ -114,6 +128,12 @@ class Inventory {
                 Product temp = new Product(parts[0], int.Parse(parts[1]), parts[2], int.Parse(parts[3]));
                 _products.Add(temp);
             }
+        }
+    }
+    private void IfProductNoFound(Product product) {
+        if (product == _products[_products.Count()-1]) {
+            Console.WriteLine("Product not found");
+            Console.WriteLine("");
         }
     }
 }

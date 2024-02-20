@@ -17,7 +17,10 @@ class DateOfBirth {
     public void ChangeYear(string newYear) {
         _year = newYear;
     }
-    public string DisplayDOB() {
-        return "";
+    public void DisplayDOB() {
+        Console.WriteLine($"Day of Birth: {_month}/{_day}/{_year}");
+    }
+    public string GetStrignRepresentation() {
+        return $"{_month}/{_day}/{_year}";
     }
 }
