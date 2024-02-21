@@ -167,13 +167,19 @@ class Bussines {
         }
     }
     public int FindCustomer() {
-        int userIndex = -1;
-        Console.Write("What is the first and last name of the customer? ");
-        string userInput = Console.ReadLine();
-        string[] temp = userInput.Split(" ");
-
-        userIndex = _customers.FindIndex(a => a.GetName() == temp[0] && a.GetLastName() == temp[1]);
-        return userIndex;
+        try {
+            int userIndex = -1;
+            Console.Write("What is the first and last name of the customer? ");
+            string userInput = Console.ReadLine();
+            string[] temp = userInput.Split(" ");
+            userIndex = _customers.FindIndex(a => a.GetName() == temp[0] && a.GetLastName() == temp[1]);
+            return userIndex;
+        }
+        catch (Exception e) {
+            Console.WriteLine("User not found");
+            Thread.Sleep(2000);
+        }
+        return -1;
     }
     private void AddCustomer() {
         try {
